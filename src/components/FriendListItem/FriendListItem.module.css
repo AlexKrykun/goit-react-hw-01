@@ -1,0 +1,11 @@
+.status {
+    font-size: 16px;
+  }
+  
+  .status.Off {
+    color: red;
+  }
+  
+  .status.On {
+    color: green;
+  }
