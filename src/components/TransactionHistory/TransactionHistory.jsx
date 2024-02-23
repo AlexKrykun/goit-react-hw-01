@@ -1,30 +1,24 @@
+import styles from './TransactionHistory.module.css';
+import { Payment } from '../Payment/Payment.jsx';
 
-import userData from '../../userData.json';
-import friends from '../../friends.json';
-import transactions from '../../transactions.json';
-
-import { Profile } from '../Profile/Profile.jsx';
-import { FriendList } from '../FriendList/FriendList.jsx';
-import { TransactionHistory } from '../TransactionHistory/TransactionHistory';
-
-export const App = () => {
+export const TransactionHistory = ({ items }) => {
   return (
-    <>
-      <div>
-        <Profile
-          name={userData.username}
-          tag={userData.tag}
-          location={userData.location}
-          image={userData.avatar}
-          stats={userData.stats}
-        />
-      </div>
-      <div>
-        <FriendList friends={friends} />
-      </div>
-      <div>
-        <TransactionHistory items={transactions} />
-      </div>
-    </>
+    <table className={styles.table}>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Currency</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {items.map((item, index) => (
+          <tr key={index}>
+            <Payment {...item} />
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
